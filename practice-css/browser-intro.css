@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #333;
+}
+
+/* 信息提示段落 */
+p.info {
+    font-size: small;
+    background-color: #dfdfdf;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* 主标题 */
+h1 {
+    color: white;
+	text-shadow: 1px 1px 2px navy;
+	padding: 15px;
+    border-radius: 4px;
+    margin: 0 0 25px 0;
+}
+
+/* 浏览器列表 */
+ul.browser-list {
+    padding-left: 20px;
+    margin-bottom: 30px;
+}
+
+ul.browser-list li {
+    margin-bottom: 8px;
+}
+
+ul.browser-list a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+ul.browser-list a:hover {
+    text-decoration: underline;
+    color: #004499;
+}
+
+/* 网格布局 */
+div#zentai {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+/* 浏览器卡片 */
+div.browser-card {
+    padding: 5px;
+    background-color: #ffefaf;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: 200px;
+    overflow: hidden;
+}
+
+/* 浏览器标题 */
+h2 {
+    font-family: cursive;
+    color: #3f3faf;
+    background: linear-gradient(to bottom, white, #ffefaf);
+    border-radius: 4px;
+    padding: 8px;
+    margin: 0 0 10px 0;
+    border: 1px solid black;
+}
+
+/* 浏览器图标（Firefox专用） */
+img.browser-icon {
+    float: right;
+    margin-right: 15px;
+    max-width: 60px;
+    height: auto;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    div#zentai {
+        grid-template-columns: 1fr;
+    }
+
+    body {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    img.browser-icon {
+        float: none;
+        display: block;
+        margin: 0 auto 10px;
+    }
+}
