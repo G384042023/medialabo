@@ -1,0 +1,39 @@
+body {
+  background-color: #fff4e6; /* 暖色系背景：淡米橙 */
+}
+
+p {
+  font-size: medium;
+}
+
+h1 {
+  color: black;
+  background: linear-gradient(90deg, #f6b26b, #fff2cc); /* 橙色到米色的渐变背景 */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+h2 {
+  color: #d2691e; /* 巧克力色，符合暖色风格 */
+}
+
+.highlight {
+  background: #fff8dc; /* 暖色背景：奶油色 */
+  border: 1px solid #deb887; /* 边框：浅棕色 */
+  border-radius: 8px;
+  padding: 8px 12px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* 阴影 */
+}
+
+a:link {
+  color: #cc6600; /* 深橙色 */
+}
+
+a:visited {
+  color: #993366; /* 紫褐色 */
+}
+
+a:hover {
+  text-decoration: none;
+  color: #ff8c00; /* 悬停变亮橙 */
+}
