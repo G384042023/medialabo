@@ -14,7 +14,7 @@ function hantei() {
     let span1 = document.querySelector('span#kaisu');
     
     let span2 = document.querySelector('span#answer');
-    
+     
 
   if(kaisu >=0 && kaisu <=2){
     if(kaisu == 0){
