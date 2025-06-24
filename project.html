@@ -4,10 +4,37 @@
     <meta charset="utf-8">
     <title>世界の天気</title>
     <link rel="stylesheet" href="project.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <script src="weather.js" defer></script>
   </head>
-  <body>
+
+  <body style="background-image:url();">
+
 	<h1>世界の天気</h1>
 
-	<h2>以下の地域の天候に関する情報を検索して表示します</h2>
+  <h2 class="text-animation">
+    <span class="highlight">検索キー:</span>
+    <select name="select" id="select">
+        <option value="">都市の天気を一つ選んでください</option>
+        <option value="0">カイロ </option>
+        <option value="1">モスクワ </option>
+        <option value="2">ヨハネスブルク</option>
+        <option value="3">北京</option>
+        <option value="4">東京</option>
+        <option value="5">シンガポール</option>
+        <option value="6">シドニー </option>
+        <option value="7">ロンドン</option>
+        <option value="8">パリ </option>
+        <option value="9">リオデジャネイロ</option>
+        <option value="10">ニューヨーク</option>
+        <option value="11">ロサンゼルス </option>
+    </select>
+    <button id="sendRequest">検索</button>
+  </h2>
+
+  </div>
+
+  <div id="result"></div>
+
   </body>
 </html>

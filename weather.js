@@ -1,8 +1,42 @@
 
 // 課題3-2 のプログラムはこの関数の中に記述すること
 function print(data) {
-
+  console.log("=== 天気情報の出力 ===");
+  console.log("都市名: " + data.name);
+  console.log("緯度: " + data.coord.lat);
+  console.log("経度: " + data.coord.lon);
+  console.log("天気: " + data.weather[0].description);
+  console.log("最低気温: " + data.main.temp_min);
+  console.log("最高気温: " + data.main.temp_max);
+  console.log("湿度: " + data.main.humidity);
+  console.log("風速: " + data.wind.speed);
+  console.log("風向: " + data.wind.deg);
 }
+
+//print(data);
+let city = [
+  ["360630",'project-html/Cairo.jpg'],
+  ["524901",'project-html/Moscow.jpg'],
+  ["993800",'project-html/Johannesburg.jpg'],
+  ["1816670",'project-html/Beijing.jpg'],
+  ["1850147",'project-html/Tokyo.jpg'],
+  ["1880252",'project-html/Singapore.jpg'],
+  ["2147714",'project-html/Sydney.jpg'],
+  ["2643743",'project-html/London.jpg'],
+  ["2968815",'project-html/Paris.jpg'],
+  ["3451189",'project-html/RiodeJaneiro.jpg'],
+  ["5128581",'project-html/NewYork.jpg'],
+  ["5368361",'project-html/LosAngeles.jpg'],
+]
+
+let b = document.querySelector('#sendRequest');
+b.addEventListener('click', sendRequest);
+
+var body = document.querySelector('body');
+function changeBackground(backgroundUrl) {
+  body.style.backgroundImage = 'url(' + backgroundUrl + ')';
+}
+
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
