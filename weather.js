@@ -15,19 +15,20 @@ function print(data) {
 
 //print(data);
 let city = [
-  ["360630",'project-html/Cairo.jpg'],
-  ["524901",'project-html/Moscow.jpg'],
-  ["993800",'project-html/Johannesburg.jpg'],
-  ["1816670",'project-html/Beijing.jpg'],
-  ["1850147",'project-html/Tokyo.jpg'],
-  ["1880252",'project-html/Singapore.jpg'],
-  ["2147714",'project-html/Sydney.jpg'],
-  ["2643743",'project-html/London.jpg'],
-  ["2968815",'project-html/Paris.jpg'],
-  ["3451189",'project-html/RiodeJaneiro.jpg'],
-  ["5128581",'project-html/NewYork.jpg'],
-  ["5368361",'project-html/LosAngeles.jpg'],
-]
+  ["360630",'project-html/Cairo.jpg', "カイロ"],
+  ["524901",'project-html/Moscow.jpg', "モスクワ"],
+  ["993800",'project-html/Johannesburg.jpg', "ヨハネスブルク"],
+  ["1816670",'project-html/Beijing.jpg', "北京"],
+  ["1850147",'project-html/Tokyo.jpg', "東京"],
+  ["1880252",'project-html/Singapore.jpg', "シンガポール"],
+  ["2147714",'project-html/Sydney.jpg', "シドニー"],
+  ["2643743",'project-html/London.jpg', "ロンドン"],
+  ["2968815",'project-html/Paris.jpg', "パリ"],
+  ["3451189",'project-html/RiodeJaneiro.jpg', "リオデジャネイロ"],
+  ["5128581",'project-html/NewYork.jpg', "ニューヨーク"],
+  ["5368361",'project-html/LosAngeles.jpg', "ロサンゼルス"]
+];
+
 
 let b = document.querySelector('#sendRequest');
 b.addEventListener('click', sendRequest);
@@ -36,6 +37,9 @@ var body = document.querySelector('body');
 function changeBackground(backgroundUrl) {
   body.style.backgroundImage = 'url(' + backgroundUrl + ')';
 }
+
+//第4回の部分
+
 
 
 // 課題5-1 の関数 printDom() はここに記述すること
@@ -50,9 +54,17 @@ function printDom(data) {
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
+  let select = document.querySelector('#select');
+  let index = select.value;
 
+  if (index === "") {
+    console.log("都市が選択されていません。");
+    return;
+  }
+
+  let cityName = city[index][2];
+  console.log("検索キー: " + cityName);
 }
-
 // 課題6-1: 通信が成功した時の処理は以下に記述
 function showResult(resp) {
 
