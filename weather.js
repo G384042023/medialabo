@@ -44,7 +44,35 @@ function changeBackground(backgroundUrl) {
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
+  // すでに存在する result を削除（リロード時の重複防止）
+  let oldResult = document.querySelector('#result');
+  if (oldResult) {
+    oldResult.remove();
+  }
 
+  // div#result を作成して body の最後に追加
+  let resultDiv = document.createElement('div');
+  resultDiv.setAttribute('id', 'result');
+  document.body.appendChild(resultDiv);
+
+  // 表示するデータを作成・追加
+  let list = [
+    ["都市名", data.name],
+    ["緯度", data.coord.lat],
+    ["経度", data.coord.lon],
+    ["天気", data.weather[0].description],
+    ["最低気温", data.main.temp_min],
+    ["最高気温", data.main.temp_max],
+    ["湿度", data.main.humidity],
+    ["風速", data.wind.speed],
+    ["風向", data.wind.deg]
+  ];
+
+  list.forEach(item => {
+    let p = document.createElement('p');
+    p.textContent = item[0] + ": " + item[1];
+    resultDiv.appendChild(p);
+  });
 }
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
