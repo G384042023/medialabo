@@ -68,7 +68,7 @@ h2 {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* 响应式保持不变 */
+/* スマホで */
 @media (max-width: 600px) {
   body {
     padding: 10px;
