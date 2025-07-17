@@ -36,9 +36,6 @@ function changeBackground(backgroundUrl) {
   body.style.backgroundImage = 'url(' + backgroundUrl + ')';
 }
 
-//第4回の部分
-
-
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
@@ -71,17 +68,13 @@ function printDom(data) {
   list.forEach(item => {
     let p = document.createElement('p');
     p.textContent = item[0] + ": " + item[1];
-    p.classList.add('weather-line'); // 可选：添加行样式
+    p.classList.add('weather-line');
     resultDiv.appendChild(p);
   });
 }
 
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
-
-
-
-
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
   let select = document.querySelector('#select');
@@ -147,8 +140,3 @@ function showError(err) {
 function finish() {
     console.log('Ajax 通信が終わりました');
 }
-
-////////////////////////////////////////
-// 以下はグルメのデータサンプル
-// 注意: 第5回までは以下を変更しないこと！
-// 注意2: 課題6-1 で以下をすべて削除すること
