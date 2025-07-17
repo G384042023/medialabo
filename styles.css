@@ -1,39 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+:root {
+  --bg-color: #fff4e6;
+  --title-gradient: linear-gradient(90deg, #f6b26b, #fff2cc);
+  --main-color: #d2691e;
+  --highlight-bg: #fff8dc;
+  --highlight-border: #deb887;
+  --link-color: #cc6600;
+  --visited-color: #993366;
+  --hover-color: #ff8c00;
+  --text-color: #333;
+  --font-base: 'Noto Sans JP', sans-serif;
+}
+
 body {
-  background-color: #fff4e6; /* 暖色系背景：淡米橙 */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-base);
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 p {
-  font-size: medium;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 h1 {
-  color: black;
-  background: linear-gradient(90deg, #f6b26b, #fff2cc); /* 橙色到米色的渐变背景 */
+  font-size: 2em;
   padding: 10px;
+  background: linear-gradient(90deg, #e67300, #ffb907);
   border-radius: 8px;
+  text-align: center;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin-bottom: 2rem;
 }
-
 h2 {
-  color: #d2691e; /* 巧克力色，符合暖色风格 */
+  color: var(--main-color);
+  font-size: 1.5em;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
-.highlight {
-  background: #fff8dc; /* 暖色背景：奶油色 */
-  border: 1px solid #deb887; /* 边框：浅棕色 */
-  border-radius: 8px;
-  padding: 8px 12px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* 阴影 */
+h3 {
+  color: var(--main-color);
+  font-size: 1.25em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
 }
 
-a:link {
-  color: #cc6600; /* 深橙色 */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 a:visited {
-  color: #993366; /* 紫褐色 */
+  color: var(--visited-color);
 }
 
 a:hover {
-  text-decoration: none;
-  color: #ff8c00; /* 悬停变亮橙 */
+  color: var(--hover-color);
+  text-decoration: underline;
+  transform: translateY(-2px);
+}
+
+.highlight {
+  background: var(--highlight-bg);
+  border: 1px solid var(--highlight-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  margin: 1rem 0;
+}
+
+/* ===== スマホ ===== */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  h3 {
+    font-size: 1.1em;
+  }
+
+  p {
+    font-size: 0.95em;
+  }
 }
