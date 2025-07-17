@@ -1,18 +1,17 @@
-
 // 課題3-2 のプログラムはこの関数の中に記述すること
 function print(data) {
   console.log("=== 天気情報の出力 ===");
+
   console.log("都市名: " + data.name);
   console.log("緯度: " + data.coord.lat);
   console.log("経度: " + data.coord.lon);
   console.log("天気: " + data.weather[0].description);
-  console.log("最低気温: " + data.main.temp_min);
-  console.log("最高気温: " + data.main.temp_max);
-  console.log("湿度: " + data.main.humidity);
-  console.log("風速: " + data.wind.speed);
-  console.log("風向: " + data.wind.deg);
+  console.log("最高気温: " + data.main.temp_max + " ℃");
+  console.log("最低気温: " + data.main.temp_min + " ℃");
+  console.log("湿度: " + data.main.humidity + " %");
+  console.log("風速: " + data.wind.speed + " m/s");
+  console.log("風向: " + data.wind.deg + " °");
 }
-
 //print(data);
 let city = [
   ["360630",'project-html/Cairo.jpg', "カイロ"],
@@ -29,7 +28,6 @@ let city = [
   ["5368361",'project-html/LosAngeles.jpg', "ロサンゼルス"]
 ];
 
-
 let b = document.querySelector('#sendRequest');
 b.addEventListener('click', sendRequest);
 
@@ -44,36 +42,40 @@ function changeBackground(backgroundUrl) {
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
-  // すでに存在する result を削除（リロード時の重複防止）
   let oldResult = document.querySelector('#result');
   if (oldResult) {
     oldResult.remove();
   }
 
-  // div#result を作成して body の最後に追加
   let resultDiv = document.createElement('div');
   resultDiv.setAttribute('id', 'result');
+  resultDiv.classList.add('card'); // カード風の装飾追加
   document.body.appendChild(resultDiv);
 
-  // 表示するデータを作成・追加
+  let cityTitle = document.createElement('h3');
+  cityTitle.textContent = "📍 " + data.name;
+  cityTitle.classList.add('city-title');
+  resultDiv.appendChild(cityTitle);
+
   let list = [
-    ["都市名", data.name],
     ["緯度", data.coord.lat],
     ["経度", data.coord.lon],
     ["天気", data.weather[0].description],
-    ["最低気温", data.main.temp_min],
-    ["最高気温", data.main.temp_max],
-    ["湿度", data.main.humidity],
-    ["風速", data.wind.speed],
-    ["風向", data.wind.deg]
+    ["最高気温", data.main.temp_max + " ℃"],
+    ["最低気温", data.main.temp_min + " ℃"],
+    ["湿度", data.main.humidity + " %"],
+    ["風速", data.wind.speed + " m/s"],
+    ["風向", data.wind.deg + " °"]
   ];
 
   list.forEach(item => {
     let p = document.createElement('p');
     p.textContent = item[0] + ": " + item[1];
+    p.classList.add('weather-line'); // 可选：添加行样式
     resultDiv.appendChild(p);
   });
 }
+
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
 
@@ -85,17 +87,55 @@ function sendRequest() {
   let select = document.querySelector('#select');
   let index = select.value;
 
-  if (index === "") {
-    console.log("都市が選択されていません。");
-    return;
+if (index === "") {
+  console.log("都市が選択されていません。");
+
+  // 【新增】清除显示区域
+  let oldResult = document.querySelector('#result');
+  if (oldResult) {
+    oldResult.remove();
   }
 
-  let cityName = city[index][2];
-  console.log("検索キー: " + cityName);
+  // 【新增】也可以加一段提示内容（可选）
+  let resultDiv = document.createElement('div');
+  resultDiv.setAttribute('id', 'result');
+  resultDiv.textContent = "都市を選択してください。";
+  document.body.appendChild(resultDiv);
+
+  return;
 }
+
+
+  let cityId = city[index][0];
+  let imagePath = city[index][1];
+  let cityName = city[index][2];
+
+  console.log("検索キー: " + cityName);
+
+  // OpenWeatherMap API のURLを作成（APIキー不要）
+  let url = `https://www.nishita-lab.org/web-contents/jsons/openweather/${cityId}.json`;
+
+  // AxiosでAjaxリクエストを送信
+  axios.get(url)
+    .then(showResult)
+    .catch(showError)
+    .then(finish);
+}
+
 // 課題6-1: 通信が成功した時の処理は以下に記述
 function showResult(resp) {
+  let data = resp.data;
 
+  // data が文字列型なら，オブジェクトに変換する
+  if (typeof data === 'string') {
+      data = JSON.parse(data);
+  }
+
+  // 追加：consoleに天気情報を出力
+  print(data);
+
+  // DOMに表示
+  printDom(data);
 }
 
 // 課題6-1: 通信エラーが発生した時の処理
@@ -112,50 +152,3 @@ function finish() {
 // 以下はグルメのデータサンプル
 // 注意: 第5回までは以下を変更しないこと！
 // 注意2: 課題6-1 で以下をすべて削除すること
-let data = {
-  "coord": {
-    "lon": 116.3972,
-    "lat": 39.9075
-  },
-  "weather": [
-    {
-      "id": 803,
-      "main": "Clouds",
-      "description": "曇りがち",
-      "icon": "04d"
-    }
-  ],
-  "base": "stations",
-  "main": {
-    "temp": 9.94,
-    "feels_like": 8.65,
-    "temp_min": 9.94,
-    "temp_max": 9.94,
-    "pressure": 1022,
-    "humidity": 14,
-    "sea_level": 1022,
-    "grnd_level": 1016
-  },
-  "visibility": 10000,
-  "wind": {
-    "speed": 2.65,
-    "deg": 197,
-    "gust": 4.84
-  },
-  "clouds": {
-    "all": 53
-  },
-  "dt": 1646542386,
-  "sys": {
-    "type": 1,
-    "id": 9609,
-    "country": "CN",
-    "sunrise": 1646520066,
-    "sunset": 1646561447
-  },
-  "timezone": 28800,
-  "id": 1816670,
-  "name": "北京市",
-  "cod": 200
-};
-
